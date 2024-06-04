@@ -76,23 +76,13 @@ A AquaVision tem como público-alvo dois principais grupos:
 1. **Startups:** Empreendedores que desejam iniciar um projeto focado na saúde dos oceanos, mas precisam de visibilidade e suporte financeiro.
 2. **Empresas:** Organizações que reconhecem seu impacto ambiental e procuram soluções sustentáveis para reduzir seu efeito nos oceanos.
 
-## Contribuição
-
-Contribuições são bem-vindas! Se você deseja contribuir para o AquaVision, siga os passos abaixo:
-
-1. Faça um fork do projeto.
-2. Crie uma nova branch: `git checkout -b minha-feature`
-3. Faça suas modificações e commit: `git commit -m 'Minha nova feature'`
-4. Faça o push para a branch: `git push origin minha-feature`
-5. Abra um Pull Request.
 
 ## Contato
 
 Para mais informações ou dúvidas, entre em contato conosco:
 
-- **Email:** contato@aquavision.com
-- **Site:** [www.aquavision.com](https://www.aquavision.com)
-- **Telefone:** +55 11 1234-5678
+- **Email:** camipzcunha@gmail.com | isabelledallacarlesso@gmail.com | kassanicoli@gmail.com
+- **RM's:** 210093 | 554592 | 554592
 
 ---
 
