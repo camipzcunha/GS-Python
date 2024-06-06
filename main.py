@@ -10,18 +10,22 @@ companies = []
 # Lista para armazenar conexões entre empresas e startups
 connections = []
 
+# Lista de campo de atuação
+fields = ['Lixo', 'Poluentes', 'Diversidade', 'Limpeza']
+
 #Exibir o menu de opções
 def show_menu():
     print("\nBem-vindo ao AquaVision Center!")
     print("1. Cadastrar usuário")
     print("2. Cadastrar startup")
     print("3. Cadastrar empresa")
-    print("4. Conecte sua empresa com uma startup")
-    print("5. Listar usuários")
-    print("6. Listar startups")
-    print("7. Listar empresas")
-    print("8. Listar conexões")
-    print("9. Sair")
+    print("4. Encontrar startup para sua empresa")
+    print("5. Conecte sua empresa com uma startup")
+    print("6. Listar usuários")
+    print("7. Listar startups")
+    print("8. Listar empresas")
+    print("9. Listar conexões")
+    print("10. Sair")
 
 #Função para cadastrar um usuário
 def register_user():
@@ -32,7 +36,8 @@ def register_user():
     repeat_password = input("Repita a senha: ")
     if password != repeat_password:
         print("As senhas não coincidem!")
-        return
+        password = input("Senha: ")
+        repeat_password = input("Repita a senha: ")
     user = {"name": name, "email": email, "password": password}
     users.append(user)
     print(f"Usuário {name} cadastrado com sucesso!")
@@ -41,47 +46,61 @@ def register_user():
 def register_startup():
     print("\nCadastre sua startup!")
     name = input("Nome: ")
-    field = input("Área de atuação: ")
+    owner = input("Proprietário: ")
+    field = input("Área de atuação. Escolha uma das seguintes opções:\n'Lixo'\n'Poluentes'\n'Diversidade'\n'Limpeza':")
+    while field not in fields:
+        print("Área de atuação inválida! Tente novamente.")
+        field = input("Escolha uma das seguintes opções:\n'Lixo'\n'Poluentes'\n'Diversidade'\n'Limpeza':")
     description = input("Descrição: ")
-    startup = {"name": name, "field": field, "description": description}
+    startup = {"name": name, "owner":owner, "field": field, "description": description}
     startups.append(startup)
     print(f"Startup {name} cadastrada com sucesso!")
+
 
 #Função para cadastrar uma empresa
 def register_company():
     print("\nCadastre sua empresa!")
     name = input("Nome: ")
+    owner = input("Proprietário: ")
     field = input("Área de atuação: ")
     description = input("Descrição: ")
-    company = {"name": name, "field": field, "description": description}
+    company = {"name": name, "owner": owner, "field": field, "description": description}
     companies.append(company)
     print(f"Empresa {name} cadastrada com sucesso!")
+
+#Função para encontrar a startup adequada para a empresa
+def find_startup(company_problem):
+    for startup in startups:
+        if startup['field'] == company_problem:
+            print(f"Startup encontrada: {startup['name']}")
+            print(f"Descrição: {startup['description']}")
+            break
+        else:
+            print("Nenhuma startup foi encontrada para o problema. Aguarde novas inscrições!.")
 
 #Função para conectar uma empresa com uma startup   
 def connect():
     company_name = input("Nome da empresa: ")
     startup_name = input("Nome da startup: ")
 
-#Verificar se a empresa e a startup existem
-company_exists = False
-startup_exists = False
+     #Verificar se a empresa e a startup existem
+    company_exists = False
+    startup_exists = False
 
-for company in companies:
-    if company["name"] == company_name:
-        company_exists = True
-        break
-
-for startup in startups:
-    if startup["name"] == startup_name:
-        startup_exists = True
-        break
-
-if company_exists and startup_exists:
-    connection = {"company_name": company_name, "startup_name": startup_name}
-    connections.append(connection)
-    print(f"{company_name} conectada com {startup_name} com sucesso!\nEntre em contato para mais informações.")
-else:
-    print("Empresa ou startup não encontrada! Tente novamente.")
+    for company in companies:
+        if company["name"] == company_name:
+            company_exists = True
+            break
+    for startup in startups:
+        if startup["name"] == startup_name:
+            startup_exists = True
+            break
+    if company_exists and startup_exists:
+        connection = {"company_name": company_name, "startup_name": startup_name}
+        connections.append(connection)
+        print(f"{company_name} conectada com {startup_name} com sucesso!\nEntre em contato para mais informações.")
+    else:
+        print("Empresa ou startup não encontrada! Tente novamente.")
 
 #Função para listar os usuários
 def list_users():
@@ -133,21 +152,27 @@ def main():
         elif option == "3":
             register_company()
         elif option == "4":
-            connect()
+            company_problem = input("Descreva a área do problema que deseja solucionar:\n'Lixo'\n'Poluentes'\n'Diversidade'\n'Limpeza':")
+            while company_problem not in fields:
+                print("Área de atuação inválida! Tente novamente.")
+                company_problem = input("Descreva a área do problema que sua empresa deseja solucionar:\n'Lixo'\n'Poluentes'\n'Diversidade'\n'Limpeza': ")
+            find_startup(company_problem)
         elif option == "5":
-            list_users()
+            connect()
         elif option == "6":
-            list_startups()
+            list_users()
         elif option == "7":
-            list_companies()
+            list_startups()
         elif option == "8":
-            list_connections()
+            list_companies()
         elif option == "9":
-            print("Até mais!")
+            list_connections()
+        elif option == "10":
+            print("Obrigado por usar o AquaVision Center! Até mais!")
             break
         else:
-            print("Opção inválida!")
-
+            print("Opção inválida! Tente novamente.")
 #Executar a função principal
+
 main()
 
