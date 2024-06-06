@@ -79,8 +79,7 @@ A AquaVision tem como público-alvo dois principais grupos:
 
 ## Contato
 
-Para mais informações ou dúvidas, entre em contato conosco:
-
+- **Nomes**: Camila Pedroza | Isabelle Dallabeneta | Nicoli Kassa
 - **Email:** camipzcunha@gmail.com | isabelledallacarlesso@gmail.com | kassanicoli@gmail.com
 - **RM's:** 210093 | 554592 | 554592
 
